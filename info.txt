@@ -6,6 +6,7 @@ Release build generate on React Native ( Android )
 
 Step 1: 
 
+
     * Go to the above web link page and follow the steps on video link then scroll down and move to macOS section
 
     * Go to your Macbook system home path terminal not your react Native project directory
