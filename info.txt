@@ -1,0 +1,96 @@
+Release build generate on React Native ( Android )
+
+  video link : https://www.youtube.com/watch?v=Fw7tqXvjJEA
+
+  web link : https://reactnative.dev/docs/signed-apk-android
+
+Step 1: 
+
+    * Go to the above web link page and follow the steps on video link then scroll down and move to macOS section
+
+    * Go to your Macbook system home path terminal not your react Native project directory
+
+       ex : santhakumar@Santhas-MacBook-Air ~ % 
+
+       not like this :  santhakumar@Santhas-MacBook-Air ~ test_app % 
+
+    *  then run below command on the terminal
+
+        /usr/libexec/java_home
+
+    *  then you will get path of your system Home directory 
+
+            ex : /Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home
+
+    * then run below command
+
+        cd /Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home
+
+    * then you will get path of your system like santhakumar@Santhas-MacBook-Air Home % 
+
+    * then run below command without any changes
+
+        sudo keytool -genkey -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+
+    * then enter your system password
+
+    * then enter keystore password whatever you want, I will enter the password for this project is 
+      " testapp "
+
+    * key store ( jks ) file created successfully on this path (/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home)
+
+    * then go to that path and copy keystore(jks) file and paste it in your project " android/app/ " folder
+
+    * then go to android/gradle.properties folder and paste below lines on the end of the line in this file
+
+
+        MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
+        MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
+        MYAPP_UPLOAD_STORE_PASSWORD=*****
+        MYAPP_UPLOAD_KEY_PASSWORD=*****
+
+    * then open android/app/build.gradle file
+
+        ...
+            android {
+                ...
+                defaultConfig { ... }
+                signingConfigs {
+                    release {
+                        if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                            storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                            storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                            keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                            keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+                        }
+                    }
+                }
+                buildTypes {
+                    release {
+                        ...
+                        signingConfig signingConfigs.release
+                    }
+                }
+            }
+            ...
+
+        * add signinConfig release into buildTypes and add release content into signinConfig
+
+        * then go to your project terminal and run below command one by one
+
+                cd android
+
+                ./gradlew clean
+
+                ./gradlew bundleRelease
+
+        * it take some time finally you will get release bundle build on the particular location
+
+        * then go to below path to see your release build
+
+            android/app/build/outputs/bundle/release 
+
+            there you will get app-release.aab file
+
+        * thats it...
+

@@ -1,0 +1,97 @@
+
+video link : https://www.youtube.com/watch?v=v4wjoCYqJIQ
+
+step 1 :
+    Go to chrome browser and search " react-native-splash-screen-npm "
+Step 2  : 
+    then open project github into react-native-splash-screen page
+
+    github project link: https://github.com/crazycodeboy/react-native-splash-screen#readme
+
+Step 3 :
+
+    package of react-native-splash-screen installation process
+
+    step 1 :
+
+            * run this command in the terminal:
+
+                npm i react-native-splash-screen --save
+
+    Step 2 :
+
+            * then install automatic installation for react-native-splash-screen don't use manual installation
+
+            * run this command in the terminal:
+
+                npm i react-native link react-native-splash-screen
+
+
+Step 4 : (Android)
+
+        * Go to MainActivity.java file and open it 
+
+        * Add this "  import android.os.Bundle;  "
+
+        * then add below lines based on the version of react-native-splash-screen  (check this in dependency section
+           on the package.json file )
+
+           // react-native-splash-screen >= 0.3.1
+                import org.devio.rn.splashscreen.SplashScreen; 
+            // react-native-splash-screen < 0.3.1
+                    import com.cboy.rn.splashscreen.SplashScreen; 
+
+        * then add below onCreate method into MainActivity
+
+             @Override
+             protected void onCreate(Bundle savedInstanceState) {
+                SplashScreen.show(this);  // here
+                super.onCreate(savedInstanceState);
+             }
+
+
+Step 5: (iOS)
+
+        * Open AppDelegate.m or AppDelegate.mm file in ios folder of the project
+
+        * add //here line in below code 
+
+            #import "AppDelegate.h"
+
+            #import <React/RCTBundleURLProvider.h>
+            #import <React/RCTRootView.h>
+            #import "RNSplashScreen.h"  // here
+
+            @implementation AppDelegate
+
+            - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+            {
+                // ...other code
+
+                [RNSplashScreen show];  // here
+                // or
+                //[RNSplashScreen showSplash:@"LaunchScreen" inRootView:rootView];
+                return YES;
+            }
+
+            @end
+
+Step 6 :
+
+        * then Create a file called launch_screen.xml in app/src/main/res/layout
+
+Step 7 : 
+
+        * Go to App Icon Generator on Chrome browser
+        * then generate splash screen images for multiple size
+        * then change the file "launch_screen.png " name of all size image file in all drawable folder
+
+Step 8 : 
+
+        * then add colors.xml files in app/src/main/res/values path in android
+        * then add below lines on colors.xml file
+
+            <?xml version="1.0" encoding="utf-8"?>
+            <resources>
+                <color name="primary_dark">#000000</color>
+            </resources>

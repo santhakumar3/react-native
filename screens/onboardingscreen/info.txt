@@ -1,0 +1,150 @@
+video link for onboarding screen :  https://www.youtube.com/watch?v=z5oHeKseh1w
+
+video link for lottie animation image : https://www.youtube.com/watch?v=oR34sislOW8
+
+
+step 1 :
+
+    go to react navigation page on chrome browser and install the necessary packages for navigation into the project
+
+    link : https://reactnavigation.org/docs/getting-started/
+
+    *  run below command in terminal
+
+        npm install @react-navigation/native
+
+        npx expo install react-native-screens react-native-safe-area-context
+
+        npm install @react-navigation/native-stack
+
+        and then create navigation page (App.js) file and paste below command
+
+            <NavigationContainer>
+                <Stack.Navigator>
+                <Stack.Screen name="Home" component={HomeScreen} />
+                </Stack.Navigator>
+            </NavigationContainer>
+
+        successfully installed all navigation packages...
+
+
+Step 2 : 
+
+            install nativewind package instead of tailwindcss package for smart stylesheet design,
+            because tailwindcss deprecated for react native...
+
+            web link : https://www.nativewind.dev
+
+            step 1: 
+                * open the above web link url
+                * select React Native Cli option from left side list
+                * then follow all the steps one by one
+                step 1 :
+                    * run below command one by one
+                        yarn add nativewind
+                        yarn add --dev tailwindcss
+                    * then run below command 
+                        npx tailwindcss init
+
+                    * then add below link in tailwind.config.js
+
+                        // tailwind.config.js
+
+                                module.exports = {
+                                - content: [],
+                                + content: ["./App.{js,jsx,ts,tsx}", "./<custom-folder>/**/*.{js,jsx,ts,tsx}"],
+                                theme: {
+                                    extend: {},
+                                    },
+                                plugins: [],
+                                
+                                }
+
+                    * then add below lines in babel.config.js
+
+                                // babel.config.js
+                                module.exports = {
+                                    presets: ['module:metro-react-native-babel-preset'],
+                                    + plugins: ["nativewind/babel"],
+                                    };
+
+step 3: 
+
+            Babel link : https://www.nativewind.dev/guides/babel
+
+            * Then select Babel option in left side of list item in nativewind website
+
+
+            *  and no need to run below commands here because we already installed when setup nativewind 
+
+                npm install nativewind
+                npm install --save-dev tailwindcss
+
+            * add below lines in tailwind.config.js file 
+
+
+
+                // tailwind.config.js
+                module.exports = {
+                content: [
+                        "./screens/**/*.{js,ts,jsx,tsx}",
+                        "./pages/**/*.{js,ts,jsx,tsx}",
+                        "./components/**/*.{js,ts,jsx,tsx}",
+                        ],
+                        // ...
+                        };
+
+
+            * add below lines in babel.config.js file
+
+                        // babel.config.js
+                        module.exports = {
+                        plugins: ["nativewind/babel"],
+                        };
+
+
+Step 4 :
+
+        * then add react native onboarding package screen using below  link
+
+            web link : https://www.npmjs.com/package/react-native-onboarding-swiper
+
+        * run the below command in your project terminal
+
+            yarn add react-native-onboarding-swiper
+
+        * and then add below code in your js file header
+
+            import Onboarding from 'react-native-onboarding-swiper';
+
+        * and then add below code in your js file body
+
+            <Onboarding
+                pages={[
+                {
+                    backgroundColor: '#fff',
+                    image: <Image source={require('./images/circle.png')} />,
+                    title: 'Onboarding',
+                    subtitle: 'Done with React Native Onboarding Swiper',
+                },
+                ...
+                ]}
+            />
+
+
+Step 5 : 
+
+        Lottie Animation coding for React Native in below link
+
+        web link :  https://github.com/lottie-react-native/lottie-react-native
+
+        step 1 :
+
+            * add below code in your js file header
+
+                import LottieView from "lottie-react-native";
+
+
+
+        
+
