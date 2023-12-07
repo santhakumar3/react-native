@@ -1,0 +1,39 @@
+
+
+video link : https://www.youtube.com/watch?v=HdFlSH-6aeY
+
+Step 1 : follow the video step by step
+
+Step 2 : open the below link for search bar icon in React native
+
+        * Icons - React Native 
+          =================
+
+        * Web link : https://ant.design/components/icon   (Ant Design)
+
+Step 3 : run below command to install Ant Design (icon) package in React native
+
+        npm install @ant-design/icons --save
+
+
+
+
+Important : if you face any watchman realated issue 
+            while run in Android Emulator then follow this steps using below link
+
+            example : watchman related issue like this
+
+                {
+                        "version": "2022.05.30.00",
+                        "error": "std::__1::system_error: open: /Users/Path/To/Project: Operation not permitted"
+                }
+
+        * open this web link : https://stackoverflow.com/questions/72451781/cant-use-watchman-operation-not-permitted
+
+        * run this command one by one
+
+                watchman shutdown-server (just in case it's running)
+                watchman watch-del-all
+                yarn start --reset-cache
+
+        * then run the app in Android Emulator it will work
