@@ -91,7 +91,7 @@ const OnBoardingScreenPage = () => {
           image: (
             <Image
               style={{height: 400, width: 400}}
-              source={require('../../assets/images/couples.png')}
+              source={require('../Assets/images/couples.png')}
             />
           ),
           title: (
@@ -106,7 +106,7 @@ const OnBoardingScreenPage = () => {
           image: (
             <Image
               style={{height: 400, width: 400}}
-              source={require('../../assets/images/boy.png')}
+              source={require('../Assets/images/boy.png')}
             />
           ),
           title: (
@@ -121,7 +121,7 @@ const OnBoardingScreenPage = () => {
           image: (
             <Image
               style={{height: 400, width: 400}}
-              source={require('../../assets/images/two_mens.png')}
+              source={require('../Assets/images/two_mens.png')}
             />
           ),
           title: (
