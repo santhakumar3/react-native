@@ -1,7 +1,8 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
 
-const ProductCard = () => {
+const ProductCard = props => {
+  const {item} = props;
   return (
     <View style={styles.mainBox}>
       {/* <Image
@@ -9,15 +10,12 @@ const ProductCard = () => {
         source={require('../../Assets/NikeApp/Nike-Air-Max-97-Air-Force.png')}
         resizeMode="center"
       /> */}
-      <Image
-        style={styles.image}
-        source={require('../../Assets/NikeApp/Nike-Air-Max-97-Air-Force.png')}
-      />
+      <Image style={styles.image} source={item.thumbnail} />
       <Text style={styles.price}>
         <Text style={styles.currency}>$</Text>
-        19.99
+        {item.price}
       </Text>
-      <Text style={styles.title}>Nike Air Max</Text>
+      <Text style={styles.title}>{item.title}</Text>
     </View>
   );
 };

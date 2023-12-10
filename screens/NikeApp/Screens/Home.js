@@ -11,13 +11,29 @@ import OptionIcon from '../../Assets/SVG/OptionIcon';
 import MenuIcon from '../../Assets/SVG//MenuIcon';
 import ProductCard from '../components/ProductCard';
 import {productData} from '../Data/ProductData';
+import Animated, {
+  FadeInDown,
+  FadeInLeft,
+  FadeInRight,
+} from 'react-native-reanimated';
+import {useNavigation} from '@react-navigation/native';
 
 const Home = () => {
+  const {navigate} = useNavigation();
   const renderItem = ({item, index}) => {
     return (
-      <TouchableOpacity>
-        <ProductCard />
-      </TouchableOpacity>
+      <Animated.View
+        entering={FadeInDown.delay(index * 300)
+          .duration(600)
+          .springify()
+          .damping(12)}>
+        <TouchableOpacity
+          onPress={() => {
+            navigate('ProductDetail', {data: item});
+          }}>
+          <ProductCard item={item} />
+        </TouchableOpacity>
+      </Animated.View>
     );
   };
 
@@ -26,13 +42,25 @@ const Home = () => {
       <SafeAreaView />
       {/* Header */}
       <View style={styles.Header}>
-        <MenuIcon />
-        <OptionIcon />
+        <Animated.View entering={FadeInLeft.delay(100).duration(400)}>
+          <MenuIcon />
+        </Animated.View>
+        <Animated.View entering={FadeInRight.delay(100).duration(400)}>
+          <OptionIcon />
+        </Animated.View>
       </View>
       {/* body */}
       <View style={styles.BodyContainer}>
-        <Text style={styles.title}>Nike Shoes</Text>
-        <Text style={styles.subTitle}>Product of your Choice</Text>
+        <Animated.Text
+          entering={FadeInLeft.delay(200).duration(500)}
+          style={styles.title}>
+          Nike Shoes
+        </Animated.Text>
+        <Animated.Text
+          entering={FadeInLeft.delay(200).duration(500)}
+          style={styles.subTitle}>
+          Product of your Choice
+        </Animated.Text>
       </View>
       {/* <ProductCard /> */}
       {/* Products */}
@@ -41,6 +69,8 @@ const Home = () => {
         keyExtractor={item => `${item.id}`}
         renderItem={renderItem}
         numColumns={2}
+        contentContainerStyle={styles.contentContainerStyle}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
@@ -71,5 +101,8 @@ const styles = StyleSheet.create({
   BodyContainer: {
     paddingHorizontal: 30,
     marginTop: 20,
+  },
+  contentContainerStyle: {
+    alignItems: 'center',
   },
 });
